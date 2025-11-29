@@ -14,83 +14,83 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-     /* Apply Inter font family */
-     body {
-       font-family: 'Inter', sans-serif;
-     }
-     /* Smooth scrolling for anchor links */
-     html {
-       scroll-behavior: smooth;
-     }
-     
-     /* Styles for the fade-in-on-scroll animation */
-     .fade-in {
-       opacity: 0;
-       transform: translateY(20px);
-       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-     }
-     
-     .fade-in.is-visible {
-       opacity: 1;
-       transform: translateY(0);
-     }
+      /* Apply Inter font family */
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Styles for the fade-in-on-scroll animation */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      
+      .fade-in.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-     /* Simple animation for the logo */
-     .logo-hover:hover {
-       transform: rotate(180deg);
-       transition: transform 0.5s ease-in-out;
-     }
+      /* Simple animation for the logo */
+      .logo-hover:hover {
+        transform: rotate(180deg);
+        transition: transform 0.5s ease-in-out;
+      }
 
-     /* Subtle pulse for call-to-action */
-     .animate-pulse-slow {
-       animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-     }
+      /* Subtle pulse for call-to-action */
+      .animate-pulse-slow {
+        animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
 
-     @keyframes pulse-subtle {
-       0%, 100% {
-         transform: scale(1);
-         opacity: 1;
-       }
-       50% {
-         transform: scale(1.03);
-         opacity: .9;
-       }
-     }
+      @keyframes pulse-subtle {
+        0%, 100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.03);
+          opacity: .9;
+        }
+      }
     </style>
     
     <script>
-     // Simple mobile menu toggle logic
-     function toggleMenu() {
-       const menu = document.getElementById('mobile-menu');
-       const hamburgerIcon = document.getElementById('icon-hamburger');
-       const closeIcon = document.getElementById('icon-close');
-       
-       menu.classList.toggle('hidden');
-       hamburgerIcon.classList.toggle('hidden');
-       hamburgerIcon.classList.toggle('block');
-       closeIcon.classList.toggle('hidden');
-       closeIcon.classList.toggle('block');
-     }
+      // Simple mobile menu toggle logic
+      function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('icon-hamburger');
+        const closeIcon = document.getElementById('icon-close');
+        
+        menu.classList.toggle('hidden');
+        hamburgerIcon.classList.toggle('hidden');
+        hamburgerIcon.classList.toggle('block');
+        closeIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('block');
+      }
 
-     // Intersection Observer for fade-in animations
-     document.addEventListener('DOMContentLoaded', () => {
-       const observer = new IntersectionObserver((entries) => {
-         entries.forEach(entry => {
-           if (entry.isIntersecting) {
-             entry.target.classList.add('is-visible');
-             observer.unobserve(entry.target); // Stop observing once it's visible
-           }
-         });
-       }, {
-         threshold: 0.1 // Trigger when 10% of the element is visible
-       });
+      // Intersection Observer for fade-in animations
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target); // Stop observing once it's visible
+            }
+          });
+        }, {
+          threshold: 0.1 // Trigger when 10% of the element is visible
+        });
 
-       // Find all elements to fade in
-       const targets = document.querySelectorAll('.fade-in');
-       targets.forEach(target => {
-         observer.observe(target);
-       });
-     });
+        // Find all elements to fade in
+        const targets = document.querySelectorAll('.fade-in');
+        targets.forEach(target => {
+          observer.observe(target);
+        });
+      });
     </script>
 </head>
 <body class="bg-white text-slate-800 antialiased">
@@ -293,8 +293,26 @@
                         </div>
                     </a>
                     
+                    <a href="https://github.com/aakashninan/SMS-Spam-Detection-System.git" target="_blank" rel="noopener noreferrer" class="block">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 50ms;">
+                            <img class="h-56 w-full object-cover" 
+                                 src="https://placehold.co/600x400/5B21B6/EDE9FE?text=SMS+Spam+Detection&font=inter" 
+                                 alt="SMS Spam Detection System Project">
+                            <div class="p-6 flex-grow flex flex-col">
+                                <h3 class="text-2xl font-semibold text-slate-900 mb-3">SMS Spam Detection System</h3>
+                                <p class="text-slate-600 mb-4 flex-grow">
+                                    A machine learning-based system implemented in Python for classifying SMS messages as spam or legitimate (ham).
+                                </p>
+                                <div class="mb-4">
+                                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full">Python</span>
+                                    <span class="inline-block bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full">Machine Learning</span>
+                                    <span class="inline-block bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-1 rounded-full">NLP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                     <a href="https://github.com/aakashninan/Word-guess-game.git" target="_blank" rel="noopener noreferrer" class="block">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 150ms;">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 100ms;">
                             <img class="h-56 w-full object-cover" 
                                  src="https://placehold.co/600x400/166534/ECFDF5?text=W+O+R+D+?&font=inter" 
                                  alt="Word Guess Game Project">
@@ -312,7 +330,7 @@
                     </a>
                     
                     <a href="https://github.com/aakashninan/Basic-Calculator.git" target="_blank" rel="noopener noreferrer" class="block">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 300ms;">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 150ms;">
                             <img class="h-56 w-full object-cover" 
                                  src="https://placehold.co/600x400/374151/F3F4F6?text=Calculator&font=inter" 
                                  alt="Basic Calculator Project">
@@ -415,7 +433,7 @@
                     
                     <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in">
                         <svg class="w-12 h-12 text-indigo-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM18 13.5l.375 1.5L18 16.5l-.375-1.5-.375-1.5 1.5.375 1.5-.375z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM18 13.5l.375 1.5L18 16.5l-.375-1.5-.375-1.5 1.5.375 1.5-.375z" />
                         </svg>
                         <h3 class="text-2xl font-semibold text-slate-900 mb-4">Cricket</h3>
                         <div class="space-y-4 text-slate-700 text-lg leading-relaxed">
@@ -430,7 +448,7 @@
 
                     <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in" style="transition-delay: 150ms;">
                         <svg class="w-12 h-12 text-indigo-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c.507 0 1.01-.02 1.51-.057M12 21c-.507 0-1.01-.02-1.51-.057M12 3a9.004 9.004 0 00-8.716 6.747M12 3a9.004 9.004 0 018.716 6.747M12 3c.507 0 1.01.02 1.51.057M12 3c-.507 0-1.01-.02-1.51-.057M12 12a3 3 0 100-6 3 3 0 000 6z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c.507 0 1.01-.02 1.51-.057M12 21c-.507 0-1.01-.02-1.51-.057M12 3a9.004 9.004 0 00-8.716 6.747M12 3a9.004 9.004 0 018.716 6.747M12 3c.507 0 1.01.02 1.51.057M12 3c-.507 0-1.01-.02-1.51-.057M12 12a3 3 0 100-6 3 3 0 000 6z" />
                         </svg>
                         <h3 class="text-2xl font-semibold text-slate-900 mb-4">Politics & Current Affairs</h3>
                         <div class="space-y-4 text-slate-700 text-lg leading-relaxed">
@@ -439,13 +457,13 @@
                             </p>
                             <p>
                                 Engaging in thoughtful discussions on these issues is something I value highly; it not only helps me develop a more rounded worldview but also sharpens my analytical skills.
-                            </T>
+                            </p>
                         </div>
                     </div>
                     
                     <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in" style="transition-delay: 300ms;">
                         <svg class="w-12 h-12 text-indigo-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />
                         </svg>
                         <h3 class="text-2xl font-semibold text-slate-900 mb-4">Cinema & Storytelling</h3>
                         <div class="space-y-4 text-slate-700 text-lg leading-relaxed">
