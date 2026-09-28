@@ -41,6 +41,15 @@ h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.025
 .float{animation:flo 4.5s ease-in-out infinite}@keyframes flo{50%{transform:translateY(-8px) rotate(5deg)}}
 .sk:hover img{animation:wig .5s}@keyframes wig{25%{transform:rotate(-12deg) scale(1.12)}75%{transform:rotate(12deg) scale(1.12)}}
 .conf{position:fixed;width:9px;height:9px;z-index:100;pointer-events:none;border-radius:2px}
+.tbadge{position:absolute;top:-16px;right:-16px;z-index:5;background:var(--ink);color:var(--y);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:800;font-size:1.05rem;padding:8px 12px;border-radius:12px;border:1.5px solid var(--ink);box-shadow:3px 3px 0 var(--y);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.tbadge:hover{transform:translate(-2px,-2px) rotate(-4deg);box-shadow:5px 5px 0 var(--y)}
+.tbadge:active{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--y)}
+.term{position:absolute;top:34px;right:-16px;z-index:6;width:250px;background:var(--ink);color:#e6e8ff;border-radius:12px;border:1.5px solid var(--ink);box-shadow:4px 4px 0 var(--y);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;text-align:left;opacity:0;transform:translateY(-6px) scale(.96);pointer-events:none;transition:opacity .2s,transform .2s}
+.term.open{opacity:1;transform:none;pointer-events:auto}
+.term-bar{display:flex;gap:6px;padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.12)}
+.term-bar i{width:9px;height:9px;border-radius:50%;display:block}
+.term-body{padding:10px 12px;min-height:74px;line-height:1.5}
+.term-body .p{color:#2ee6a6}.term-body .o{color:var(--y)}
 a:focus-visible,button:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.fade-in{opacity:1;transform:none}}
 </style>
@@ -114,8 +123,11 @@ function toggleMenu(){
         <button id="photo" class="relative block rounded-[2rem] overflow-hidden hover:-rotate-2 transition-transform duration-300" style="border:1.5px solid var(--ink)" aria-label="Celebrate!">
           <img src="me.jpg" alt="Aakash Ninan Gikku" class="w-56 h-56 sm:w-72 sm:h-72 object-cover">
         </button>
-        <span class="absolute -top-4 -right-4 text-4xl float" aria-hidden="true">🏏</span>
-        
+        <button id="tbadge" class="tbadge" type="button" aria-expanded="false" aria-controls="term" title="Click me! Run a command">&lt;/&gt;</button>
+        <div id="term" class="term" role="status" aria-live="polite">
+          <div class="term-bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
+          <div class="term-body" id="term-body"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -237,6 +249,7 @@ const exp=[
  {c:"#0D9488",logo:"wplogo.png",alt:"Wellness Point Logo",role:"Freelance",date:"May 2026",name:"Wellness Point Hospital",url:"https://wellnesspointhospital.vercel.app/",d:"Architected and launched a fully integrated full-stack portal as a standalone developer. Engineered critical architecture handling automated real-time patient appointment bookings, robust calendar logic, and dynamic facility content delivery.",t:["Full Stack Web Developer","Healthcare Workflows"]},
  {c:"#4F46E5",logo:"nordlogo.png",alt:"Nordvio Tech Logo",role:"Intern",date:"April 2026 - May 2026",name:"Nordvio Technologies",url:"https://www.nordviotech.com/",d:"Deeply embedded within the engineering pipeline to build an offline Agentic AI Assistant specialized for Hospital Management Systems (HMS). Focused closely on secure system orchestration and processing models directly within production boundaries.",t:["Software Developer","Agentic AI Ecosystems"]}];
 const proj=[
+ {n:"Emotion Analyser",g:"#db2777,#9d174d",u:"https://github.com/aakashninan/Emotion_Analyser.git",d:"An emotion analysis tool that reads input and identifies the underlying emotion, built to explore how machine learning can interpret human sentiment.",t:["Python","Machine Learning","NLP"]},
  {n:"Wellness Point Hospital",g:"#0D9488,#115e59",u:"https://wellnesspointdeploy1.vercel.app/",d:"A professional healthcare portal built to streamline patient inquiries, operational support desk interactions, and medical clinic features.",t:["MERN Stack","Vercel","TailwindCSS"]},
  {n:"E-Learning Platform",g:"#4F46E5,#3730a3",u:"https://deployment-seven-gray.vercel.app/",d:"A comprehensive online learning management system featuring course enrollment, progress tracking, and interactive content delivery.",t:["MERN Stack","Redux","Vercel"]},
  {n:"Disaster Management System",g:"#dc2626,#991b1b",u:"https://github.com/aakashninan/Disaster-Management-System.git",d:"A desktop application built with Java Swing and MySQL to help coordinate and manage resources during disaster scenarios.",t:["Java","MySQL","Java Swing"]},
@@ -284,6 +297,35 @@ function confetti(x,y){
 }
 $('photo').addEventListener('click',e=>{const r=e.currentTarget.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2)});
 $('hello').addEventListener('click',e=>confetti(e.clientX,e.clientY));
+
+/* Interactive terminal badge */
+const cmds=[
+ ["console.log('Hello, World!')","Hello, World! 👋"],
+ ["git commit -m 'it works'","[main a1b2c3d] it works. (don't ask why)"],
+ ["python -c \"import this\"","Simple is better than complex."],
+ ["npm run build","✔ Compiled successfully. Ship it 🚀"],
+ ["whoami","aakash — full-stack + ML builder"],
+ ["sudo make coffee","☕ Brewing... 1 bug fixed, 2 created"],
+ ["ls projects/","emotion-analyser  e-learning  wellness-point ..."],
+ ["ping opportunities","Reply from you: waiting... say hello 👇"]
+];
+let ti=0,tw=null;
+const tb=$('tbadge'),term=$('term'),tbody=$('term-body');
+function typeCmd(){
+ const [c,o]=cmds[ti%cmds.length];ti++;
+ clearTimeout(tw);let i=0;tbody.innerHTML='<span class="p">$</span> <span id="tc"></span>';
+ const el=$('tc');
+ (function step(){
+  if(i<=c.length){el.textContent=c.slice(0,i++);tw=setTimeout(step,22)}
+  else{tbody.innerHTML+=`<div class="o mt-1">${o.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</div>`}
+ })();
+}
+tb.addEventListener('click',e=>{
+ const r=tb.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2);
+ term.classList.add('open');tb.setAttribute('aria-expanded','true');typeCmd();
+ e.stopPropagation();
+});
+document.addEventListener('click',e=>{if(!term.contains(e.target)){term.classList.remove('open');tb.setAttribute('aria-expanded','false')}});
 
 document.addEventListener('DOMContentLoaded',()=>{
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{threshold:.08});
