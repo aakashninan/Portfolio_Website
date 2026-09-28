@@ -1,682 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aakash Ninan Gikku - Portfolio</title>
-    
-    <meta name="google-site-verification" content="vkeGS4dfFc6O0ixuSjc-DLVgLnFR_RInQvaJCmDHolA" />
-
-    <meta name="description" content="Welcome to my portfolio! I'm Aakash Ninan Gikku, an aspiring software developer and tech enthusiast. Explore my featured full-stack and machine learning projects." />
-    
-    <link rel="icon" type="image/png" sizes="48x48" href="icon.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-      /* Apply Inter font family */
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-      /* Smooth scrolling for anchor links */
-      html {
-        scroll-behavior: smooth;
-      }
-      
-      /* Styles for the fade-in-on-scroll animation */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      }
-      
-      .fade-in.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Simple animation for the logo */
-      .logo-hover:hover {
-        transform: rotate(180deg);
-        transition: transform 0.5s ease-in-out;
-      }
-
-      /* Subtle pulse for call-to-action */
-      .animate-pulse-slow {
-        animation: pulse-subtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-      }
-
-      @keyframes pulse-subtle {
-        0%, 100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(1.03);
-          opacity: .9;
-        }
-      }
-    </style>
-    
-    <script>
-      // Simple mobile menu toggle logic
-      function toggleMenu() {
-        const menu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('icon-hamburger');
-        const closeIcon = document.getElementById('icon-close');
-        const toggleBtn = document.getElementById('menu-toggle');
-        
-        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-        toggleBtn.setAttribute('aria-expanded', !isExpanded);
-        
-        menu.classList.toggle('hidden');
-        hamburgerIcon.classList.toggle('hidden');
-        hamburgerIcon.classList.toggle('block');
-        closeIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('block');
-      }
-
-      // Intersection Observer for fade-in animations
-      document.addEventListener('DOMContentLoaded', () => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target); // Stop observing once it's visible
-            }
-          });
-        }, {
-          threshold: 0.1 // Trigger when 10% of the element is visible
-        });
-
-        // Find all elements to fade in
-        const targets = document.querySelectorAll('.fade-in');
-        targets.forEach(target => {
-          observer.observe(target);
-        });
-      });
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aakash Ninan Gikku - Portfolio</title>
+<meta name="google-site-verification" content="vkeGS4dfFc6O0ixuSjc-DLVgLnFR_RInQvaJCmDHolA" />
+<meta name="description" content="Welcome to my portfolio! I'm Aakash Ninan Gikku, an aspiring software developer and tech enthusiast. Explore my featured full-stack and machine learning projects." />
+<link rel="icon" type="image/png" sizes="48x48" href="icon.png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f7f8fc;--card:#fff;--ink:#14142b;--mut:#565c70;--line:#e2e5ef;--acc:#4f46e5;--soft:#eceafe;--y:#ffd23f}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink)}
+h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.025em}
+.mut{color:var(--mut)}.acc{color:var(--acc)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.lift:hover{transform:translateY(-4px);border-color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.hl{background:linear-gradient(transparent 62%,var(--y) 62%,var(--y) 90%,transparent 90%);padding:0 .08em}
+.h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;text-align:center;margin-bottom:2.5rem}
+.tag{display:inline-block;font-size:.75rem;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--soft);color:#3730a3}
+.film{transition:all .2s}.film:hover{background:var(--y);color:var(--ink);transform:translateY(-2px)}.film::after{content:" ↗";opacity:.6}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 24px;border-radius:999px;font-weight:700;font-size:.92rem;transition:all .2s;border:1.5px solid var(--ink)}
+.btn-p{background:var(--ink);color:#fff}.btn-p:hover{background:var(--acc);border-color:var(--acc);transform:translateY(-2px)}
+.btn-o{background:#fff}.btn-o:hover{background:var(--y);transform:translateY(-2px)}
+.navlink{position:relative;padding:6px 2px;color:var(--mut);font-weight:600;font-size:.92rem;transition:color .2s}
+.navlink:hover,.navlink.active{color:var(--ink)}
+.navlink.active::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;border-radius:3px;background:var(--y)}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease-out,transform .6s ease-out}
+.fade-in.is-visible{opacity:1;transform:none}
+.hero-in>*{animation:rise .7s both}.hero-in>*:nth-child(2){animation-delay:.1s}.hero-in>*:nth-child(3){animation-delay:.2s}.hero-in>*:nth-child(4){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+.cursor::after{content:"";display:inline-block;width:3px;height:.85em;background:var(--acc);margin-left:3px;vertical-align:-.05em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.marq{display:flex;width:max-content;animation:mq 34s linear infinite}
+.marq:hover{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.float{animation:flo 4.5s ease-in-out infinite}@keyframes flo{50%{transform:translateY(-8px) rotate(5deg)}}
+.sk:hover img{animation:wig .5s}@keyframes wig{25%{transform:rotate(-12deg) scale(1.12)}75%{transform:rotate(12deg) scale(1.12)}}
+.conf{position:fixed;width:9px;height:9px;z-index:100;pointer-events:none;border-radius:2px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.fade-in{opacity:1;transform:none}}
+</style>
+<script>
+function toggleMenu(){
+  const menu=document.getElementById('mobile-menu'),h=document.getElementById('icon-hamburger'),c=document.getElementById('icon-close'),b=document.getElementById('menu-toggle');
+  b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true');
+  menu.classList.toggle('hidden');h.classList.toggle('hidden');h.classList.toggle('block');c.classList.toggle('hidden');c.classList.toggle('block');
+}
+</script>
 </head>
-<body class="bg-white text-slate-800 antialiased selection:bg-indigo-500 selection:text-white">
+<body class="antialiased selection:bg-[#ffd23f]">
 
-    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-slate-200">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main Navigation">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="#" class="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg p-1" aria-label="Aakash Ninan Gikku Portfolio Home">
-                        <span class="flex items-center justify-center w-10 h-10 bg-indigo-600 text-white text-xl font-bold rounded-lg logo-hover transition-transform duration-500" aria-hidden="true">
-                            AN
-                        </span>
-                        <span class="text-2xl font-bold text-indigo-600 hidden sm:block">Aakash Ninan Gikku</span>
-                    </a>
-                </div>
-                
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="#about" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1">About</a>
-                    <a href="#education" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1">Education</a>
-                    <a href="#experience" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1">Experience</a>
-                    <a href="#projects" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1">Projects</a>
-                    <a href="#skills" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1">Skills</a>
-                    <a href="#personal" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1">Personal</a>
-                    <a href="#contact" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1">Contact</a>
-                </div>
-                
-                <div class="md:hidden flex items-center">
-                    <button id="menu-toggle" type="button" class="inline-flex items-center justify-center w-12 h-12 rounded-md text-slate-500 hover:text-indigo-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMenu()">
-                        <span class="sr-only">Open main menu</span>
-                        <svg id="icon-hamburger" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="md:hidden hidden transition-all duration-300 ease-in-out" id="mobile-menu">
-                <div class="pt-2 pb-4 space-y-2 border-t border-slate-100 mt-1">
-                    <a href="#about" class="block px-4 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 active:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="toggleMenu()">About</a>
-                    <a href="#education" class="block px-4 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 active:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="toggleMenu()">Education</a>
-                    <a href="#experience" class="block px-4 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 active:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="toggleMenu()">Experience</a>
-                    <a href="#projects" class="block px-4 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 active:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="toggleMenu()">Projects</a>
-                    <a href="#skills" class="block px-4 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 active:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="toggleMenu()">Skills</a>
-                    <a href="#personal" class="block px-4 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 active:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="toggleMenu()">Personal</a>
-                    <a href="#contact" class="block px-4 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50 active:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500" onclick="toggleMenu()">Contact</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+<header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background:rgba(247,248,252,.88);border-color:var(--line)">
+<nav class="max-w-6xl mx-auto px-5 sm:px-8" aria-label="Main Navigation">
+  <div class="flex justify-between items-center h-16">
+    <a href="#" class="flex items-center gap-3" aria-label="Aakash Ninan Gikku Portfolio Home">
+      <span class="flex items-center justify-center w-10 h-10 rounded-xl font-extrabold disp text-sm text-white" style="background:var(--ink)" aria-hidden="true">AN</span>
+      <span class="font-extrabold disp text-lg hidden sm:block">Aakash Ninan Gikku</span>
+    </a>
+    <div class="hidden md:flex items-center gap-7" id="navlinks">
+      <a class="navlink" href="#about">About</a><a class="navlink" href="#education">Education</a><a class="navlink" href="#experience">Experience</a><a class="navlink" href="#projects">Projects</a><a class="navlink" href="#skills">Skills</a><a class="navlink" href="#personal">Personal</a>
+      <a class="btn btn-p !min-h-[40px] !px-5" href="#contact">Contact</a>
+    </div>
+    <button id="menu-toggle" type="button" class="md:hidden inline-flex items-center justify-center w-12 h-12 rounded-md" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMenu()">
+      <span class="sr-only">Open main menu</span>
+      <svg id="icon-hamburger" class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="md:hidden hidden pb-4" id="mobile-menu">
+    <div class="pt-2 border-t" style="border-color:var(--line)">
+      <a href="#about" class="block px-3 py-3 font-semibold" onclick="toggleMenu()">About</a>
+      <a href="#education" class="block px-3 py-3 font-semibold" onclick="toggleMenu()">Education</a>
+      <a href="#experience" class="block px-3 py-3 font-semibold" onclick="toggleMenu()">Experience</a>
+      <a href="#projects" class="block px-3 py-3 font-semibold" onclick="toggleMenu()">Projects</a>
+      <a href="#skills" class="block px-3 py-3 font-semibold" onclick="toggleMenu()">Skills</a>
+      <a href="#personal" class="block px-3 py-3 font-semibold" onclick="toggleMenu()">Personal</a>
+      <a href="#contact" class="block px-3 py-3 font-semibold" onclick="toggleMenu()">Contact</a>
+    </div>
+  </div>
+</nav>
+</header>
 
-    <main>
-        
-        <section id="about" class="py-16 md:py-32 bg-indigo-50 fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:grid-cols-3 md:gap-12 items-center">
-                    <div class="flex justify-center md:col-span-1">
-                        <img src="me.jpg" 
-                             alt="Aakash Ninan Gikku" 
-                             class="w-44 h-44 md:w-60 md:h-60 rounded-full object-cover shadow-xl border-8 border-white">
-                    </div>
-                    
-                    <div class="md:col-span-2 text-center md:text-left">
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight text-balance">
-                            Hi, I'm <span class="text-indigo-600">Aakash Ninan Gikku</span>
-                        </h1>
-                        <p class="mt-4 text-lg sm:text-xl md:text-2xl text-slate-600 max-w-xl mx-auto md:mx-0 text-balance">
-                            An aspiring software developer and tech enthusiast.
-                        </p>
-                        
-                        <div class="mt-8 flex justify-center md:justify-start space-x-6">
-                            <a href="https://www.linkedin.com/in/ninanaakash/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full text-slate-500 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors bg-white/50 md:bg-transparent shadow-sm md:shadow-none" title="LinkedIn">
-                                <span class="sr-only">LinkedIn</span>
-                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                </svg>
-                            </a>
-                            <a href="https://github.com/aakashninan" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full text-slate-500 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors bg-white/50 md:bg-transparent shadow-sm md:shadow-none" title="GitHub">
-                                <span class="sr-only">GitHub</span>
-                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.201 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
-                                </svg>
-                            </a>
-                            <a href="mailto:aakashninangikku@gmail.com" class="w-12 h-12 flex items-center justify-center rounded-full text-slate-500 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors bg-white/50 md:bg-transparent shadow-sm md:shadow-none" title="Email">
-                                <span class="sr-only">Email</span>
-                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12 md:mt-16 max-w-4xl mx-auto fade-in" style="transition-delay: 200ms;">
-                    <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8">About Me</h2>
-                    <div class="space-y-5 text-slate-700 text-base md:text-lg leading-relaxed text-left md:text-justify bg-white p-6 sm:p-8 md:p-10 rounded-xl shadow-lg border border-slate-200">
-                        <p>
-                            Welcome to my portfolio! I’m <strong>Aakash Ninan Gikku</strong>, an aspiring software developer and tech enthusiast with a deep curiosity for how technology shapes the world around us. Currently pursuing my Integrated Master of Computer Applications (IMCA), I’m continuously exploring new technologies, frameworks, and design principles to build efficient, meaningful digital solutions.
-                        </p>
-                        <p>
-                            From crafting responsive websites to experimenting with emerging tools and programming languages, I enjoy transforming ideas into working applications. I believe in writing clean, maintainable code and creating user experiences that are simple, accessible, and visually appealing.
-                        </p>
-                        <p>
-                            My journey so far has been filled with exciting challenges, from classroom projects and collaborative assignments to independent explorations in web development and programming. Each step has strengthened my problem-solving skills, creativity, and ability to adapt to evolving tech trends.
-                        </p>
-                        <p>
-                            When I’m not coding, you’ll find me unwinding with my other passions. I'm an avid cricket fan, always ready for the next big match, and I love diving into the world of movies. I also have a keen interest in politics and current affairs, staying informed about the world around me.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="education" class="py-16 md:py-24 fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-10 md:mb-16">
-                    Education
-                </h2>
-                <div class="max-w-3xl mx-auto space-y-6 md:space-y-8">
-                    
-                    <div class="bg-white p-5 sm:p-6 rounded-xl shadow-lg border border-slate-200 flex flex-row items-center space-x-4 sm:space-x-5 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 fade-in">
-                        <div class="flex-shrink-0">
-                            <span class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-indigo-100 text-indigo-600">
-                                <svg class="w-7 h-7 sm:w-9 sm:h-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.905 59.905 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5z" />
-                                </svg>
-                            </span>
-                        </div>
-                        <div class="flex-grow min-w-0">
-                            <h3 class="text-lg sm:text-xl font-semibold text-slate-900 truncate sm:whitespace-normal">Integrated Master of Computer Applications (IMCA)</h3>
-                            <p class="text-slate-700 text-sm sm:text-lg">Rajagiri College of Social Sciences</p>
-                        </div>
-                        <div class="flex-shrink-0 text-right">
-                             <span class="text-sm sm:text-lg font-semibold text-indigo-600 block sm:inline bg-indigo-50 sm:bg-transparent px-2 py-1 sm:p-0 rounded">9.5 CGPA</span>
-                        </div>
-                    </div>
+<main>
+<section id="about" class="pt-12 md:pt-20 pb-14">
+<div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <div class="grid md:grid-cols-5 gap-10 md:gap-14 items-center">
+    <div class="md:col-span-3 order-2 md:order-1 text-center md:text-left hero-in">
+      <span class="tag inline-flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Open to new opportunities</span>
+      <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05]">Hi, I'm <span class="hl">Aakash Ninan Gikku</span></h1>
+      <p class="mt-5 text-xl sm:text-2xl font-medium">I build <span class="font-extrabold acc cursor" id="typed"></span></p>
+      <p class="mt-3 text-lg mut max-w-xl mx-auto md:mx-0">An aspiring software developer and tech enthusiast.</p>
+      <div class="mt-8 flex flex-wrap gap-3 justify-center md:justify-start">
+        <a href="#projects" class="btn btn-p">View my projects</a>
+        <a href="mailto:aakashninangikku@gmail.com" class="btn btn-o" id="hello">Say hello 👋</a>
+      </div>
+      <div class="mt-8 flex justify-center md:justify-start gap-3">
+        <a href="https://www.linkedin.com/in/ninanaakash/" target="_blank" rel="noopener noreferrer" class="w-11 h-11 flex items-center justify-center rounded-full card lift" title="LinkedIn"><span class="sr-only">LinkedIn</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        <a href="https://github.com/aakashninan" target="_blank" rel="noopener noreferrer" class="w-11 h-11 flex items-center justify-center rounded-full card lift" title="GitHub"><span class="sr-only">GitHub</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.201 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg></a>
+        <a href="mailto:aakashninangikku@gmail.com" class="w-11 h-11 flex items-center justify-center rounded-full card lift" title="Email"><span class="sr-only">Email</span>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+      </div>
+    </div>
+    <div class="md:col-span-2 order-1 md:order-2 flex justify-center">
+      <div class="relative">
+        <div class="absolute inset-0 rounded-[2rem] rotate-6 translate-x-3 translate-y-3" style="background:var(--y);border:1.5px solid var(--ink)"></div>
+        <button id="photo" class="relative block rounded-[2rem] overflow-hidden hover:-rotate-2 transition-transform duration-300" style="border:1.5px solid var(--ink)" aria-label="Celebrate!">
+          <img src="me.jpg" alt="Aakash Ninan Gikku" class="w-56 h-56 sm:w-72 sm:h-72 object-cover">
+        </button>
+        <span class="absolute -top-4 -right-4 text-4xl float" aria-hidden="true">🏏</span>
+        <span class="absolute -bottom-3 -left-5 card !rounded-xl px-3 py-2 text-sm font-bold disp shadow-[3px_3px_0_#14142b] !border-[#14142b]">9.5 CGPA · IMCA</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-                    <div class="bg-white p-5 sm:p-6 rounded-xl shadow-lg border border-slate-200 flex flex-row items-center space-x-4 sm:space-x-5 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 fade-in" style="transition-delay: 150ms;">
-                        <div class="flex-shrink-0">
-                            <span class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-indigo-100 text-indigo-600">
-                                <svg class="w-7 h-7 sm:w-9 sm:h-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25" />
-                                </svg>
-                            </span>
-                        </div>
-                        <div class="flex-grow min-w-0">
-                            <h3 class="text-lg sm:text-xl font-semibold text-slate-900 truncate sm:whitespace-normal">Class 12th</h3>
-                            <p class="text-slate-700 text-sm sm:text-lg">Bhavan's Newsprint Vidyalaya</p>
-                        </div>
-                        <div class="flex-shrink-0 text-right">
-                             <span class="text-sm sm:text-lg font-semibold text-indigo-600 block sm:inline bg-indigo-50 sm:bg-transparent px-2 py-1 sm:p-0 rounded">96.6%</span>
-                        </div>
-                    </div>
+<div class="border-y py-4 overflow-hidden bg-white" style="border-color:var(--line)" aria-hidden="true">
+  <div class="marq disp font-bold text-xl mut" id="marq"></div>
+</div>
 
-                    <div class="bg-white p-5 sm:p-6 rounded-xl shadow-lg border border-slate-200 flex flex-row items-center space-x-4 sm:space-x-5 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 fade-in" style="transition-delay: 300ms;">
-                        <div class="flex-shrink-0">
-                            <span class="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-indigo-100 text-indigo-600">
-                                <svg class="w-7 h-7 sm:w-9 sm:h-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25" />
-                                </svg>
-                            </span>
-                        </div>
-                        <div class="flex-grow min-w-0">
-                            <h3 class="text-lg sm:text-xl font-semibold text-slate-900 truncate sm:whitespace-normal">Class 10th</h3>
-                            <p class="text-slate-700 text-sm sm:text-lg">Bhavan's Newsprint Vidyalaya</p>
-                        </div>
-                        <div class="flex-shrink-0 text-right">
-                             <span class="text-sm sm:text-lg font-semibold text-indigo-600 block sm:inline bg-indigo-50 sm:bg-transparent px-2 py-1 sm:p-0 rounded">96.2%</span>
-                        </div>
-                    </div>
+<section id="about-me" class="py-16 md:py-20 fade-in">
+<div class="max-w-4xl mx-auto px-5 sm:px-8">
+  <h2 class="h2">About <span class="hl">Me</span></h2>
+  <div class="card p-6 sm:p-10 space-y-5 md:text-lg leading-relaxed mut">
+    <p>Welcome to my portfolio! I’m <strong style="color:var(--ink)">Aakash Ninan Gikku</strong>, an aspiring software developer and tech enthusiast with a deep curiosity for how technology shapes the world around us. Currently pursuing my Integrated Master of Computer Applications (IMCA), I’m continuously exploring new technologies, frameworks, and design principles to build efficient, meaningful digital solutions.</p>
+    <p>From crafting responsive websites to experimenting with emerging tools and programming languages, I enjoy transforming ideas into working applications. I believe in writing clean, maintainable code and creating user experiences that are simple, accessible, and visually appealing.</p>
+    <p>My journey so far has been filled with exciting challenges, from classroom projects and collaborative assignments to independent explorations in web development and programming. Each step has strengthened my problem-solving skills, creativity, and ability to adapt to evolving tech trends.</p>
+    <p>When I’m not coding, you’ll find me unwinding with my other passions. I'm an avid cricket fan, always ready for the next big match, and I love diving into the world of movies. I also have a keen interest in politics and current affairs, staying informed about the world around me.</p>
+  </div>
+</div>
+</section>
 
-                </div>
-            </div>
-        </section>
+<section id="education" class="py-16 md:py-20 fade-in">
+<div class="max-w-3xl mx-auto px-5 sm:px-8">
+  <h2 class="h2">Education</h2>
+  <div id="edu" class="space-y-4"></div>
+</div>
+</section>
 
-        <section id="experience" class="py-16 md:py-24 bg-white text-slate-800 border-t border-b border-slate-200 fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4 text-slate-950 text-balance">Experience & Professional Ventures</h2>
-                <p class="text-slate-600 text-center max-w-2xl mx-auto mb-10 md:mb-16 text-base md:text-lg text-balance">
-                    Building production-ready ecosystems, scaling systems, and launching impactful products.
-                </p>
-                
-                <div class="max-w-4xl mx-auto space-y-8 md:space-y-12">
-                    
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 md:p-10 shadow-lg flex flex-col md:flex-row gap-6 md:gap-8 items-center transition-all duration-300 hover:border-[#EA580C]/40 hover:shadow-xl">
-                        <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-slate-50 rounded-xl p-4 flex items-center justify-center border border-slate-100 flex-shrink-0">
-                            <img src="burnt_orange_logo.png" alt="VoyaTraveller Logo" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div class="flex-grow text-center md:text-left text-balance w-full">
-                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
-                                <div>
-                                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                        <span class="text-[#EA580C] font-semibold tracking-wider text-xs uppercase bg-[#EA580C]/10 px-2.5 py-1 rounded">Co-Founder</span>
-                                        <span class="flex items-center text-slate-500 text-xs font-medium">
-                                            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                            May 2026 - Present
-                                        </span>
-                                    </div>
-                                    <h3 class="text-xl md:text-2xl font-bold text-slate-950 mt-1.5">VoyaTraveller</h3>
-                                </div>
-                                <a href="https://voyatraveller.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full md:w-auto px-5 py-2.5 bg-[#EA580C] text-white text-sm font-semibold rounded-full shadow-sm hover:bg-[#C2410C] focus:outline-none focus:ring-2 focus:ring-[#EA580C] focus:ring-offset-2 transition-colors duration-200 self-center md:self-start min-h-[44px]">
-                                    Go to website
-                                </a>
-                            </div>
-                            <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-4 text-justify md:text-left">
-                                Co-founded and engineered a dynamic travel ecosystem. VoyaTraveller acts as an intelligent travel companion finding and event orchestration platform, reshaping how modern adventurers network and coordinate localized journeys.
-                            </p>
-                            <div class="flex flex-wrap justify-center md:justify-start gap-2">
-                                <span class="px-2.5 py-0.5 bg-[#EA580C]/5 text-[#C2410C] border border-[#EA580C]/10 rounded text-xs font-medium">Travel Tech</span>
-                                <span class="px-2.5 py-0.5 bg-[#EA580C]/5 text-[#C2410C] border border-[#EA580C]/10 rounded text-xs font-medium">Product Orchestration</span>
-                            </div>
-                        </div>
-                    </div>
+<section id="experience" class="py-16 md:py-20 fade-in bg-white border-y" style="border-color:var(--line)">
+<div class="max-w-5xl mx-auto px-5 sm:px-8">
+  <h2 class="h2 !mb-3 text-balance">Experience &amp; <span class="hl">Professional Ventures</span></h2>
+  <p class="text-center max-w-2xl mx-auto mb-12 text-lg mut text-balance">Building production-ready ecosystems, scaling systems, and launching impactful products.</p>
+  <div id="exp" class="space-y-6"></div>
+</div>
+</section>
 
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 md:p-10 shadow-lg flex flex-col md:flex-row gap-6 md:gap-8 items-center transition-all duration-300 hover:border-[#0D9488]/40 hover:shadow-xl">
-                        <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-slate-50 rounded-xl p-4 flex items-center justify-center border border-slate-100 flex-shrink-0">
-                            <img src="wplogo.png" alt="Wellness Point Logo" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div class="flex-grow text-center md:text-left text-balance w-full">
-                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
-                                <div>
-                                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                        <span class="text-[#0D9488] font-semibold tracking-wider text-xs uppercase bg-[#0D9488]/10 px-2.5 py-1 rounded">Freelance</span>
-                                        <span class="flex items-center text-slate-500 text-xs font-medium">
-                                            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                            May 2026
-                                        </span>
-                                    </div>
-                                    <h3 class="text-xl md:text-2xl font-bold text-slate-950 mt-1.5">Wellness Point Hospital</h3>
-                                </div>
-                                <a href="https://wellnesspointhospital.vercel.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full md:w-auto px-5 py-2.5 bg-[#0D9488] text-white text-sm font-semibold rounded-full shadow-sm hover:bg-[#0F766E] focus:outline-none focus:ring-2 focus:ring-[#0D9488] focus:ring-offset-2 transition-colors duration-200 self-center md:self-start min-h-[44px]">
-                                    Go to website
-                                </a>
-                            </div>
-                            <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-4 text-justify md:text-left">
-                                Architected and launched a fully integrated full-stack portal as a standalone developer. Engineered critical architecture handling automated real-time patient appointment bookings, robust calendar logic, and dynamic facility content delivery.
-                            </p>
-                            <div class="flex flex-wrap justify-center md:justify-start gap-2">
-                                <span class="px-2.5 py-0.5 bg-[#0D9488]/5 text-[#0F766E] border border-[#0D9488]/10 rounded text-xs font-medium">Full Stack Web Developer</span>
-                                <span class="px-2.5 py-0.5 bg-[#0D9488]/5 text-[#0F766E] border border-[#0D9488]/10 rounded text-xs font-medium">Healthcare Workflows</span>
-                            </div>
-                        </div>
-                    </div>
+<section id="projects" class="py-16 md:py-20 fade-in">
+<div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <h2 class="h2">Featured <span class="hl">Projects</span></h2>
+  <div id="proj" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</div>
+</section>
 
-                    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 md:p-10 shadow-lg flex flex-col md:flex-row gap-6 md:gap-8 items-center transition-all duration-300 hover:border-[#4F46E5]/40 hover:shadow-xl">
-                        <div class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-slate-50 rounded-xl p-4 flex items-center justify-center border border-slate-100 flex-shrink-0">
-                            <img src="nordlogo.png" alt="Nordvio Tech Logo" class="max-w-full max-h-full object-contain">
-                        </div>
-                        <div class="flex-grow text-center md:text-left text-balance w-full">
-                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
-                                <div>
-                                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                                        <span class="text-[#4F46E5] font-semibold tracking-wider text-xs uppercase bg-[#4F46E5]/10 px-2.5 py-1 rounded">Intern</span>
-                                        <span class="flex items-center text-slate-500 text-xs font-medium">
-                                            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                            April 2026 - May 2026
-                                        </span>
-                                    </div>
-                                    <h3 class="text-xl md:text-2xl font-bold text-slate-950 mt-1.5">Nordvio Technologies</h3>
-                                </div>
-                                <a href="https://www.nordviotech.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full md:w-auto px-5 py-2.5 bg-[#4F46E5] text-white text-sm font-semibold rounded-full shadow-sm hover:bg-[#4338CA] focus:outline-none focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-2 transition-colors duration-200 self-center md:self-start min-h-[44px]">
-                                    Go to website
-                                </a>
-                            </div>
-                            <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-4 text-justify md:text-left">
-                                Deeply embedded within the engineering pipeline to build an offline Agentic AI Assistant specialized for Hospital Management Systems (HMS). Focused closely on secure system orchestration and processing models directly within production boundaries.
-                            </p>
-                            <div class="flex flex-wrap justify-center md:justify-start gap-2">
-                                <span class="px-2.5 py-0.5 bg-[#4F46E5]/5 text-[#4338CA] border border-[#4F46E5]/10 rounded text-xs font-medium">Software Developer</span>
-                                <span class="px-2.5 py-0.5 bg-[#4F46E5]/5 text-[#4338CA] border border-[#4F46E5]/10 rounded text-xs font-medium">Agentic AI Ecosystems</span>
-                            </div>
-                        </div>
-                    </div>
+<section id="skills" class="py-16 md:py-20 fade-in bg-white border-y" style="border-color:var(--line)">
+<div class="max-w-5xl mx-auto px-5 sm:px-8">
+  <h2 class="h2">Technologies &amp; <span class="hl">Skills</span></h2>
+  <div id="skl" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+</div>
+</section>
 
-                </div>
-            </div>
-        </section>
+<section id="personal" class="py-16 md:py-20 fade-in">
+<div class="max-w-6xl mx-auto px-5 sm:px-8">
+  <h2 class="h2">Beyond the <span class="hl">Code</span></h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="card lift p-6 sm:p-8">
+      <span class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background:#d9fbef" aria-hidden="true">🏏</span>
+      <h3 class="text-2xl font-extrabold mb-3">Cricket</h3>
+      <div class="space-y-3 mut leading-relaxed">
+        <p>I am an <strong style="color:var(--ink)">avid cricket fan</strong>, a passion that I engage with as both a player and a keen follower. On the field, I’ve learned firsthand about the importance of strategy, patience, and the synergy of a team working in unison toward a common goal.</p>
+        <p>Off the field, I enjoy following the sport, appreciating the tactical depth and mental resilience it demands from athletes. More than just a game, cricket has been a valuable teacher, instilling in me the spirit of sportsmanship.</p>
+      </div>
+    </div>
+    <div class="card lift p-6 sm:p-8">
+      <span class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background:#dfe7ff" aria-hidden="true">🌍</span>
+      <h3 class="text-2xl font-extrabold mb-3">Politics &amp; Current Affairs</h3>
+      <div class="space-y-3 mut leading-relaxed">
+        <p>I have a <strong style="color:var(--ink)">keen interest in politics and current affairs</strong>. I make it a point to stay informed about the events shaping our world, from domestic policy to international relations. I’m fascinated by the intricate systems at play and enjoy analyzing how decisions made today will ripple out to affect our society, economy, and future.</p>
+        <p>Engaging in thoughtful discussions on these issues is something I value highly; it not only helps me develop a more rounded worldview but also sharpens my analytical skills.</p>
+      </div>
+    </div>
+    <div class="card lift p-6 sm:p-8">
+      <span class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4" style="background:#ffe1ec" aria-hidden="true">🎬</span>
+      <h3 class="text-2xl font-extrabold mb-3">Cinema &amp; Storytelling</h3>
+      <div class="space-y-3 mut leading-relaxed">
+        <p>I am a huge movie enthusiast and a <strong style="color:var(--ink)">big Bollywood fan</strong>, especially enjoying the classic drama and rich narratives. I believe films are a powerful medium for storytelling and art.</p>
+        <p class="font-semibold" style="color:var(--ink)">My taste is quite diverse, with some of my all-time favorites including:</p>
+        <div class="flex flex-wrap gap-2"><a href="https://www.imdb.com/title/tt0109830/" target="_blank" rel="noopener noreferrer" class="tag film" title="Forrest Gump on IMDb">Forrest Gump</a><a href="https://www.imdb.com/title/tt0119217/" target="_blank" rel="noopener noreferrer" class="tag film" title="Good Will Hunting on IMDb">Good Will Hunting</a><a href="https://www.imdb.com/title/tt0097165/" target="_blank" rel="noopener noreferrer" class="tag film" title="Dead Poets Society on IMDb">Dead Poets Society</a><a href="https://www.imdb.com/title/tt2350496/" target="_blank" rel="noopener noreferrer" class="tag film" title="The Lunchbox on IMDb">The Lunchbox</a><a href="https://www.imdb.com/title/tt0353975/" target="_blank" rel="noopener noreferrer" class="tag film" title="Sandesham on IMDb">Sandesham</a><a href="https://www.imdb.com/title/tt3783958/" target="_blank" rel="noopener noreferrer" class="tag film" title="La La Land on IMDb">La La Land</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-        <section id="projects" class="py-16 md:py-24 fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-10 md:mb-16">
-                    Featured Projects
-                </h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-10">
+<section id="contact" class="py-16 md:py-20 fade-in">
+<div class="max-w-4xl mx-auto px-5 sm:px-8">
+  <div class="rounded-3xl p-8 sm:p-14 text-center text-white relative overflow-hidden" style="background:var(--ink)">
+    <span class="absolute -top-10 -right-10 w-44 h-44 rounded-full" style="background:var(--y);opacity:.95" aria-hidden="true"></span>
+    <span class="absolute -bottom-12 -left-8 w-36 h-36 rounded-full" style="background:var(--acc)" aria-hidden="true"></span>
+    <div class="relative">
+      <h2 class="text-4xl md:text-5xl font-extrabold disp">Get In Touch</h2>
+      <p class="mt-4 text-lg max-w-2xl mx-auto text-balance text-slate-300">I'm currently open to new opportunities and collaborations. Feel free to reach out if you want to chat about a project or just say hi!</p>
+      <a href="mailto:aakashninangikku@gmail.com" class="btn mt-8 !min-h-[52px] text-lg" style="background:var(--y);color:var(--ink);border-color:var(--y)">Say Hello 👋</a>
+      <div class="mt-8 flex justify-center gap-4">
+        <a href="https://www.linkedin.com/in/ninanaakash/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 transition-colors" title="LinkedIn"><span class="sr-only">LinkedIn</span>
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        <a href="https://github.com/aakashninan" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 transition-colors" title="GitHub"><span class="sr-only">GitHub</span>
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.201 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</main>
 
-                    <a href="https://wellnesspointdeploy1.vercel.app/" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full">
-                            <img class="h-48 sm:h-56 w-full object-cover" 
-                                 src="https://placehold.co/600x400/0D9488/FFFFFF?text=Wellness+Point+Hospital&font=inter" 
-                                 alt="Wellness Point Hospital Website Project">
-                            <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2 sm:mb-3">Wellness Point Hospital</h3>
-                                <p class="text-slate-600 text-sm sm:text-base mb-4 flex-grow text-justify md:text-left">
-                                    A professional healthcare portal built to streamline patient inquiries, operational support desk interactions, and medical clinic features.
-                                </p>
-                                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-1">
-                                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-1 rounded-full">MERN Stack</span>
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Vercel</span>
-                                    <span class="inline-block bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-1 rounded-full">TailwindCSS</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+<footer class="py-8 text-center text-sm mut border-t" style="border-color:var(--line)">&copy; 2026 Aakash Ninan. All rights reserved.</footer>
 
-                    <a href="https://deployment-seven-gray.vercel.app/" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 50ms;">
-                            <img class="h-48 sm:h-56 w-full object-cover" 
-                                 src="https://placehold.co/600x400/4F46E5/FFFFFF?text=E-Learning+Platform&font=inter" 
-                                 alt="E-Learning Platform Project">
-                            <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2 sm:mb-3">E-Learning Platform</h3>
-                                <p class="text-slate-600 text-sm sm:text-base mb-4 flex-grow text-justify md:text-left">
-                                    A comprehensive online learning management system featuring course enrollment, progress tracking, and interactive content delivery.
-                                </p>
-                                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-1">
-                                    <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-1 rounded-full">MERN Stack</span>
-                                    <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Redux</span>
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">Vercel</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://github.com/aakashninan/Disaster-Management-System.git" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 100ms;">
-                            <img class="h-48 sm:h-56 w-full object-cover" 
-                                 src="https://placehold.co/600x400/991B1B/FEE2E2?text=Disaster+Management+System&font=inter" 
-                                 alt="Disaster Management System Project">
-                            <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2 sm:mb-3">Disaster Management System</h3>
-                                <p class="text-slate-600 text-sm sm:text-base mb-4 flex-grow text-justify md:text-left">
-                                    A desktop application built with Java Swing and MySQL to help coordinate and manage resources during disaster scenarios.
-                                </p>
-                                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-1">
-                                    <span class="inline-block bg-orange-100 text-orange-800 text-xs font-medium px-2.5 py-1 rounded-full">Java</span>
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">MySQL</span>
-                                    <span class="inline-block bg-red-100 text-red-800 text-xs font-medium px-2.5 py-1 rounded-full">Java Swing</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://github.com/aakashninan/SMS-Spam-Detection-System.git" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 150ms;">
-                            <img class="h-48 sm:h-56 w-full object-cover" 
-                                 src="https://placehold.co/600x400/5B21B6/EDE9FE?text=SMS+Spam+Detection&font=inter" 
-                                 alt="SMS Spam Detection System Project">
-                            <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2 sm:mb-3">SMS Spam Detection System</h3>
-                                <p class="text-slate-600 text-sm sm:text-base mb-4 flex-grow text-justify md:text-left">
-                                    A machine learning-based system implemented in Python for classifying SMS messages as spam or legitimate (ham).
-                                </p>
-                                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-1">
-                                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-1 rounded-full">Python</span>
-                                    <span class="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-1 rounded-full">Machine Learning</span>
-                                    <span class="inline-block bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-1 rounded-full">NLP</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+<script>
+const dev=n=>`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${n}/${n}-original.svg`;
+const $=id=>document.getElementById(id);
+const CF=["#ffd23f","#4f46e5","#ff6b9d","#2ee6a6","#ff8a3d"];
+const edu=[["Integrated Master of Computer Applications (IMCA)","Rajagiri College of Social Sciences","9.5 CGPA"],["Class 12th","Bhavan's Newsprint Vidyalaya","96.6%"],["Class 10th","Bhavan's Newsprint Vidyalaya","96.2%"]];
+const exp=[
+ {c:"#EA580C",logo:"burnt_orange_logo.png",alt:"VoyaTraveller Logo",role:"Co-Founder",date:"May 2026 - Present",name:"VoyaTraveller",url:"https://voyatraveller.com/",d:"Co-founded and engineered a dynamic travel ecosystem. VoyaTraveller acts as an intelligent travel companion finding and event orchestration platform, reshaping how modern adventurers network and coordinate localized journeys.",t:["Travel Tech","Product Orchestration"]},
+ {c:"#0D9488",logo:"wplogo.png",alt:"Wellness Point Logo",role:"Freelance",date:"May 2026",name:"Wellness Point Hospital",url:"https://wellnesspointhospital.vercel.app/",d:"Architected and launched a fully integrated full-stack portal as a standalone developer. Engineered critical architecture handling automated real-time patient appointment bookings, robust calendar logic, and dynamic facility content delivery.",t:["Full Stack Web Developer","Healthcare Workflows"]},
+ {c:"#4F46E5",logo:"nordlogo.png",alt:"Nordvio Tech Logo",role:"Intern",date:"April 2026 - May 2026",name:"Nordvio Technologies",url:"https://www.nordviotech.com/",d:"Deeply embedded within the engineering pipeline to build an offline Agentic AI Assistant specialized for Hospital Management Systems (HMS). Focused closely on secure system orchestration and processing models directly within production boundaries.",t:["Software Developer","Agentic AI Ecosystems"]}];
+const proj=[
+ {n:"Wellness Point Hospital",g:"#0D9488,#115e59",u:"https://wellnesspointdeploy1.vercel.app/",d:"A professional healthcare portal built to streamline patient inquiries, operational support desk interactions, and medical clinic features.",t:["MERN Stack","Vercel","TailwindCSS"]},
+ {n:"E-Learning Platform",g:"#4F46E5,#3730a3",u:"https://deployment-seven-gray.vercel.app/",d:"A comprehensive online learning management system featuring course enrollment, progress tracking, and interactive content delivery.",t:["MERN Stack","Redux","Vercel"]},
+ {n:"Disaster Management System",g:"#dc2626,#991b1b",u:"https://github.com/aakashninan/Disaster-Management-System.git",d:"A desktop application built with Java Swing and MySQL to help coordinate and manage resources during disaster scenarios.",t:["Java","MySQL","Java Swing"]},
+ {n:"SMS Spam Detection System",g:"#7c3aed,#5b21b6",u:"https://github.com/aakashninan/SMS-Spam-Detection-System.git",d:"A machine learning-based system implemented in Python for classifying SMS messages as spam or legitimate (ham).",t:["Python","Machine Learning","NLP"]},
+ {n:"Word Guess Game",g:"#16a34a,#166534",u:"https://github.com/aakashninan/Word-guess-game.git",d:"A fun and interactive word guessing game built using Python. It uses a MySQL database to store words and track scores.",t:["Python","MySQL"]},
+ {n:"Basic Calculator",g:"#475569,#1e293b",u:"https://github.com/aakashninan/Basic-Calculator.git",d:"A clean, functional calculator built with HTML, CSS, and JavaScript. A classic project to demonstrate DOM manipulation.",t:["HTML","CSS","JavaScript"]}];
+const skl=[["html5","HTML5","HTML5 Specification Logo"],["css3","CSS3","CSS3 Stylesheet Logo"],["javascript","JavaScript","JavaScript Scripting Language Logo"],["c","C","C Programming Language Logo"],["java","Java","Java Platform Environment Logo"],["react","React","React Component UI Engine Logo"],["nodejs","Node.js","Node.js Engine Runtime Logo"],["python","Python","Python Language Environment Logo"],["git","Git","Git Control Flow Repository Logo"],["canva","Canva","Canva Creative Tool System Logo"],["mysql","MySQL","MySQL Architecture Storage Logo"],["oracle","SQL*Plus","Oracle Database Architecture Logo"]];
 
-                    <a href="https://github.com/aakashninan/Word-guess-game.git" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 200ms;">
-                            <img class="h-48 sm:h-56 w-full object-cover" 
-                                 src="https://placehold.co/600x400/166534/ECFDF5?text=W+O+R+D+?&font=inter" 
-                                 alt="Word Guess Game Project">
-                            <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2 sm:mb-3">Word Guess Game</h3>
-                                <p class="text-slate-600 text-sm sm:text-base mb-4 flex-grow text-justify md:text-left">
-                                    A fun and interactive word guessing game built using Python. It uses a MySQL database to store words and track scores.
-                                </p>
-                                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-1">
-                                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-1 rounded-full">Python</span>
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">MySQL</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="https://github.com/aakashninan/Basic-Calculator.git" target="_blank" rel="noopener noreferrer" class="block rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] fade-in h-full" style="transition-delay: 250ms;">
-                            <img class="h-48 sm:h-56 w-full object-cover" 
-                                 src="https://placehold.co/600x400/374151/F3F4F6?text=Calculator&font=inter" 
-                                 alt="Basic Calculator Project">
-                            <div class="p-5 sm:p-6 flex-grow flex flex-col">
-                                <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-2 sm:mb-3">Basic Calculator</h3>
-                                <p class="text-slate-600 text-sm sm:text-base mb-4 flex-grow text-justify md:text-left">
-                                    A clean, functional calculator built with HTML, CSS, and JavaScript. A classic project to demonstrate DOM manipulation.
-                                </p>
-                                <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-1">
-                                    <span class="inline-block bg-red-100 text-red-800 text-xs font-medium px-2.5 py-1 rounded-full">HTML</span>
-                                    <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded-full">CSS</span>
-                                    <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-1 rounded-full">JavaScript</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+$('edu').innerHTML=edu.map(e=>`<div class="card lift p-5 sm:p-6 flex items-center justify-between gap-4"><div class="min-w-0"><h3 class="text-lg sm:text-xl font-extrabold">${e[0]}</h3><p class="mut">${e[1]}</p></div><span class="tag !text-sm sm:!text-base !px-4 !py-1.5 whitespace-nowrap" style="background:var(--y);color:var(--ink)">${e[2]}</span></div>`).join('');
 
-                </div>
-            </div>
-        </section>
+$('exp').innerHTML=exp.map(x=>`<div class="card lift p-5 sm:p-7 flex flex-col md:flex-row gap-6 items-center" style="border-left:5px solid ${x.c}">
+ <div class="w-24 h-24 rounded-2xl p-3 flex items-center justify-center flex-shrink-0 border" style="border-color:var(--line);background:var(--bg)"><img src="${x.logo}" alt="${x.alt}" class="max-w-full max-h-full object-contain"></div>
+ <div class="flex-grow w-full text-center md:text-left">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+   <div><div class="flex flex-wrap items-center justify-center md:justify-start gap-2"><span class="tag" style="background:${x.c}1f;color:${x.c}">${x.role}</span><span class="text-xs font-semibold mut">${x.date}</span></div>
+   <h3 class="text-2xl font-extrabold mt-1.5">${x.name}</h3></div>
+   <a href="${x.url}" target="_blank" rel="noopener noreferrer" class="btn btn-o !min-h-[42px] self-center md:self-start w-full md:w-auto">Go to website ↗</a>
+  </div>
+  <p class="mut leading-relaxed mb-4">${x.d}</p>
+  <div class="flex flex-wrap justify-center md:justify-start gap-2">${x.t.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+ </div></div>`).join('');
 
-        <section id="skills" class="py-16 md:py-24 bg-indigo-50 fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-10 md:mb-16">
-                    Technologies & Skills
-                </h2>
-                
-                <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:grid-cols-3 md:grid-cols-4 md:gap-8">
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 Specification Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">HTML5</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 50ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 Stylesheet Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">CSS3</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 100ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Scripting Language Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">JavaScript</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 150ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C Programming Language Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">C</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 200ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java Platform Environment Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">Java</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 250ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Component UI Engine Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">React</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 300ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js Engine Runtime Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">Node.js</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 350ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Language Environment Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">Python</span>
-                    </div>
-                    
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 400ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git Control Flow Repository Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">Git</span>
-                    </div>
-                        
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 450ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva Creative Tool System Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">Canva</span>
-                    </div>
+$('proj').innerHTML=proj.map(p=>{const [a,b]=p.g.split(',');return `<a href="${p.u}" target="_blank" rel="noopener noreferrer" class="block rounded-2xl">
+ <div class="card lift overflow-hidden flex flex-col h-full">
+  <div class="h-40 flex items-end p-6 relative overflow-hidden" style="background:linear-gradient(135deg,${a},${b})"><span class="absolute -top-8 -right-8 w-28 h-28 rounded-full bg-white/10" aria-hidden="true"></span><h3 class="relative text-2xl sm:text-[1.7rem] font-extrabold leading-tight text-white text-balance">${p.n}</h3></div>
+  <div class="p-5 sm:p-6 flex-grow flex flex-col">
+   <p class="mut mb-4 flex-grow">${p.d}</p>
+   <div class="flex flex-wrap gap-2">${p.t.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div></div></a>`}).join('');
 
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 500ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL Architecture Storage Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">MySQL</span>
-                    </div>
+$('skl').innerHTML=skl.map(s=>`<div class="card lift sk flex flex-col items-center p-5"><img src="${dev(s[0])}" alt="${s[2]}" class="h-12 w-12"/><span class="mt-3 font-bold disp">${s[1]}</span></div>`).join('');
 
-                    <div class="flex flex-col items-center p-4 sm:p-6 bg-white rounded-xl shadow-md hover:shadow-lg hover:-translate-y-1.5 transition-all duration-300 fade-in" style="transition-delay: 550ms;">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle Database Architecture Logo" class="h-12 w-12 sm:h-16 sm:w-16"/>
-                        <span class="mt-3 sm:mt-4 text-base sm:text-lg font-medium text-slate-700">SQL*Plus</span>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-        
-        <section id="personal" class="py-16 md:py-24 bg-white fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-10 md:mb-16">
-                    Beyond the Code
-                </h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    
-                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in">
-                        <svg class="w-10 h-10 sm:w-12 sm:h-12 text-indigo-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM18 13.5l.375 1.5L18 16.5l-.375-1.5-.375-1.5 1.5.375 1.5-.375z" />
-                        </svg>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-3 sm:mb-4">Cricket</h3>
-                        <div class="space-y-3 sm:space-y-4 text-slate-700 text-base sm:text-lg leading-relaxed text-justify md:text-left">
-                            <p>
-                                I am an <strong>avid cricket fan</strong>, a passion that I engage with as both a player and a keen follower. On the field, I’ve learned firsthand about the importance of strategy, patience, and the synergy of a team working in unison toward a common goal.
-                            </p>
-                            <p>
-                                Off the field, I enjoy following the sport, appreciating the tactical depth and mental resilience it demands from athletes. More than just a game, cricket has been a valuable teacher, instilling in me the spirit of sportsmanship.
-                            </p>
-                        </div>
-                    </div>
+const strip=["HTML5","CSS3","JavaScript","C","Java","React","Node.js","Python","Git","Canva","MySQL","SQL*Plus"].map(t=>`<span class="mx-6">${t}</span><span class="acc" aria-hidden="true">✦</span>`).join('');
+$('marq').innerHTML=strip+strip;
 
-                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in" style="transition-delay: 150ms;">
-                        <svg class="w-10 h-10 sm:w-12 sm:h-12 text-indigo-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c.507 0 1.01-.02 1.51-.057M12 21c-.507 0-1.01-.02-1.51-.057M12 3a9.004 9.004 0 00-8.716 6.747M12 3a9.004 9.004 0 018.716 6.747M12 3c.507 0 1.01.02 1.51.057M12 3c-.507 0-1.01-.02-1.51-.057M12 12a3 3 0 100-6 3 3 0 000 6z" />
-                        </svg>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-3 sm:mb-4">Politics & Current Affairs</h3>
-                        <div class="space-y-3 sm:space-y-4 text-slate-700 text-base sm:text-lg leading-relaxed text-justify md:text-left">
-                            <p>
-                                I have a <strong>keen interest in politics and current affairs</strong>. I make it a point to stay informed about the events shaping our world, from domestic policy to international relations. I’m fascinated by the intricate systems at play and enjoy analyzing how decisions made today will ripple out to affect our society, economy, and future.
-                            </p>
-                            <p>
-                                Engaging in thoughtful discussions on these issues is something I value highly; it not only helps me develop a more rounded worldview but also sharpens my analytical skills.
-                            </p>
-                        </div>
-                    </div>
+const roles=["full-stack web apps","machine learning models","agentic AI tools","things people enjoy using"];
+let ri=0,ci=0,del=false;const tp=$('typed');
+(function tick(){const w=roles[ri];ci+=del?-1:1;tp.textContent=w.slice(0,ci);
+ let s=del?35:75;if(!del&&ci===w.length){del=true;s=1600}else if(del&&ci===0){del=false;ri=(ri+1)%roles.length;s=300}setTimeout(tick,s)})();
 
-                    <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 fade-in" style="transition-delay: 300ms;">
-                        <svg class="w-10 h-10 sm:w-12 sm:h-12 text-indigo-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />
-                        </svg>
-                        <h3 class="text-xl sm:text-2xl font-semibold text-slate-900 mb-3 sm:mb-4">Cinema & Storytelling</h3>
-                        <div class="space-y-3 sm:space-y-4 text-slate-700 text-base sm:text-lg leading-relaxed text-justify md:text-left">
-                            <p>
-                                I am a huge movie enthusiast and a <strong>big Bollywood fan</strong>, especially enjoying the classic drama and rich narratives. I believe films are a powerful medium for storytelling and art.
-                            </p>
-                            <div>
-                                <span class="block mb-2 font-medium">My taste is quite diverse, with some of my all-time favorites including:</span>
-                                <ul class="list-disc list-inside space-y-1 pl-1">
-                                    <li>Forrest Gump</li>
-                                    <li>Good Will Hunting</li>
-                                    <li>Dead Poets Society</li>
-                                    <li>The Lunchbox</li>
-                                    <li>Sandesham</li>
-                                    <li>La La Land</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+function confetti(x,y){
+ if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+ for(let i=0;i<30;i++){const d=document.createElement('i');d.className='conf';d.style.background=CF[i%5];d.style.left=x+'px';d.style.top=y+'px';document.body.appendChild(d);
+  const a=Math.random()*Math.PI*2,v=80+Math.random()*150;
+  d.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${Math.cos(a)*v}px,${Math.sin(a)*v+110}px) rotate(${Math.random()*720}deg)`,opacity:0}],{duration:900+Math.random()*500,easing:'cubic-bezier(.2,.7,.3,1)'}).onfinish=()=>d.remove()}
+}
+$('photo').addEventListener('click',e=>{const r=e.currentTarget.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2)});
+$('hello').addEventListener('click',e=>confetti(e.clientX,e.clientY));
 
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-20 md:py-32 fade-in">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Get In Touch</h2>
-                <p class="mt-4 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto text-balance">
-                    I'm currently open to new opportunities and collaborations.
-                    Feel free to reach out if you want to chat about a project or just say hi!
-                </p>
-                
-                <a href="mailto:aakashninangikku@gmail.com" class="mt-10 inline-flex items-center justify-center bg-indigo-600 text-white text-lg font-medium px-8 py-3.5 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 animate-pulse-slow min-h-[48px]">
-                    Say Hello
-                </a>
-                
-                <div class="mt-16 flex justify-center space-x-8">
-                    <a href="https://www.linkedin.com/in/ninanaakash/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full text-slate-500 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors" title="LinkedIn">
-                        <span class="sr-only">LinkedIn</span>
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
-                    </a>
-                    <a href="https://github.com/aakashninan" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center rounded-full text-slate-500 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors" title="GitHub">
-                        <span class="sr-only">GitHub</span>
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.201 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-    </main>
-
-    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-            <p class="text-sm sm:text-base tracking-wide">&copy; 2026 Aakash Ninan. All rights reserved.</p>
-        </div>
-    </footer>
-
+document.addEventListener('DOMContentLoaded',()=>{
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}}),{threshold:.08});
+ document.querySelectorAll('.fade-in').forEach(t=>io.observe(t));
+ const links=[...document.querySelectorAll('#navlinks .navlink')];
+ const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id=e.target.id==='about-me'?'about':e.target.id;links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id))}}),{rootMargin:'-40% 0px -55% 0px'});
+ document.querySelectorAll('main section[id]').forEach(s=>so.observe(s));
+});
+</script>
 </body>
 </html>
